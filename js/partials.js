@@ -27,14 +27,14 @@ const TopBannerHTML = `
 
 /* ----- Navbar ----- */
 const nosotrosItems = [
-  { label: '¿Quiénes somos?',         href: 'quienes-somos.html' },
-  { label: 'Propuesta pedagógica',    href: 'propuesta-pedagogica.html' },
-  { label: 'Reglamentos',             href: 'reglamentos.html' },
+  { label: '¿Quiénes somos?', href: 'quienes-somos.html' },
+  { label: 'Propuesta pedagógica', href: 'propuesta-pedagogica.html' },
+  { label: 'Reglamentos', href: 'reglamentos.html' },
   { label: 'Nuestra Infraestructura', href: 'infraestructura.html' },
 ];
 const admisionItems = [
-  { label: 'Proceso de admisión',  href: 'proceso-admision.html' },
-  { label: 'Traslados',            href: 'traslados.html' },
+  { label: 'Proceso de admisión', href: 'proceso-admision.html' },
+  { label: 'Traslados', href: 'traslados.html' },
   { label: 'Preguntas frecuentes', href: 'preguntas-frecuentes.html' },
 ];
 
@@ -86,7 +86,7 @@ const NavbarHTML = `
          class="bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
         Admisión 2026
       </a>
-      <a href="https://intranet.catolicaschool.edu.pe" target="_blank" rel="noopener"
+      <a href="https://www.peruschool.edu.pe/catolicaschool" target="_blank" rel="noopener"
          class="bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
         Intranet
       </a>
@@ -126,7 +126,7 @@ const NavbarHTML = `
     <a href="${BASE}pages/noticias.html" class="block font-heading text-sm font-semibold text-foreground py-3">Noticias</a>
 
     <a href="${BASE}index.html#admision" class="block bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-3">Admisión 2026</a>
-    <a href="https://intranet.catolicaschool.edu.pe" target="_blank" rel="noopener" class="block bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-2">Intranet</a>
+    <a href="https://www.peruschool.edu.pe/catolicaschool" target="_blank" rel="noopener" class="block bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-2">Intranet</a>
   </div>
 </nav>`;
 
@@ -154,7 +154,7 @@ const FooterHTML = `
         <ul class="space-y-3 text-sm">
           <li class="flex items-start gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-accent mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Av. Ejemplo 123, Lima, Perú
+            Calle W, Mz Q2 Séptima Etapa-Santo Domingo de Carabayllo, Carabayllo, Peru
           </li>
           <li class="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-accent shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -162,7 +162,7 @@ const FooterHTML = `
           </li>
           <li class="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-accent shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            info@catolicaschool.edu.pe
+            mesadepartes@colegiolacatolica.edu.pe
           </li>
         </ul>
       </div>
@@ -194,16 +194,16 @@ const WhatsAppHTML = `
 /* ----- Social Sidebar ----- */
 const SocialSidebarHTML = `
 <div class="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-0.5">
-  <a href="#" aria-label="Instagram" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors rounded-tl-lg">
+  <a href="https://www.instagram.com/catolicaschool/" target="_blank" rel="noopener" aria-label="Instagram" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors rounded-tl-lg">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
   </a>
-  <a href="#" aria-label="Facebook" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors">
+  <a href="https://www.facebook.com/CatolicaSchool/" target="_blank" rel="noopener" aria-label="Facebook" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
   </a>
-  <a href="#" aria-label="TikTok" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors">
+  <a href="https://www.tiktok.com/@catolicaschool" target="_blank" rel="noopener" aria-label="TikTok" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.15v-3.44a4.85 4.85 0 01-3.77-1.25V6.69z"/></svg>
   </a>
-  <a href="#" aria-label="LinkedIn" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors rounded-bl-lg">
+  <a href="https://pe.linkedin.com/company/catolica-school" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center hover:bg-secondary transition-colors rounded-bl-lg">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
   </a>
 </div>`;
@@ -214,11 +214,11 @@ function injectPartials() {
     const el = document.getElementById(id);
     if (el) el.innerHTML = html;
   };
-  slot('partial-banner',  TopBannerHTML);
-  slot('partial-navbar',  NavbarHTML);
-  slot('partial-footer',  FooterHTML);
+  slot('partial-banner', TopBannerHTML);
+  slot('partial-navbar', NavbarHTML);
+  slot('partial-footer', FooterHTML);
   slot('partial-whatsapp', WhatsAppHTML);
-  slot('partial-social',  SocialSidebarHTML);
+  slot('partial-social', SocialSidebarHTML);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
