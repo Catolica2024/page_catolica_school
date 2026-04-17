@@ -1,0 +1,133 @@
+/* ============ Fuentes corporativas ============ */
+/* Limitamos Bree al rango ASCII básico — los caracteres con tilde
+   caen al siguiente fallback (system) que sí tiene glifos. */
+@font-face {
+  font-family: 'Bree';
+  src: url('../fonts/Bree_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E;
+}
+@font-face {
+  font-family: 'Bree';
+  src: url('../fonts/Bree_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E;
+}
+@font-face {
+  font-family: 'ClanPro';
+  src: url('../fonts/clanpro-news.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeueLTCom-HvEx.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-007E;
+}
+
+/* ============ Design tokens (HSL) ============ */
+:root {
+  --background: 210 14% 95%;
+  --foreground: 223 60% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 223 60% 20%;
+  --primary: 223 100% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 193 55% 47%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 200 10% 92%;
+  --muted-foreground: 220 10% 45%;
+  --accent: 49 90% 60%;
+  --accent-foreground: 223 60% 20%;
+  --border: 210 15% 88%;
+  --banner-bg: 223 100% 55%;
+  --banner-foreground: 0 0% 100%;
+  --whatsapp: 136 100% 37%;
+  --whatsapp-foreground: 0 0% 100%;
+}
+
+/* ============ Base ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'ClanPro', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  /* Bree no contiene todos los glifos con tilde — fallback a system para esos caracteres */
+  font-family: 'Bree', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+
+/* ============ Animaciones (Tailwind config las referencia) ============ */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to   { height: var(--radix-acc-height, auto); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-acc-height, auto); opacity: 1; }
+  to   { height: 0; opacity: 0; }
+}
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.animate-fade-in    { animation: fade-in 0.5s ease-out forwards; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-slide-down { animation: slide-down 0.18s ease-out; }
+
+/* Reveal on scroll (IntersectionObserver) */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease-out, transform .6s ease-out; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* FAQ accordion (vanilla) */
+.faq-item .faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-content { padding-bottom: 1rem; }
+.faq-item .faq-icon { transition: transform 0.2s ease-out; }
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+
+/* Mobile submenu collapse */
+.mobile-sub { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.mobile-sub.open { max-height: 400px; }
+.mobile-caret { transition: transform 0.2s ease-out; }
+.mobile-caret.open { transform: rotate(180deg); }
+
+/* Desktop dropdown */
+.nav-dropdown { display: none; }
+.nav-dropdown.open { display: block; animation: slide-down 0.18s ease-out; }
+.nav-caret.open { transform: rotate(180deg); }
+.nav-caret { transition: transform 0.2s ease-out; }
