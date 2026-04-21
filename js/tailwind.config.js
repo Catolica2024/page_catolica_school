@@ -4,8 +4,8 @@ tailwind.config = {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       fontFamily: {
-        heading:   ['Bree', 'sans-serif'],
-        body:      ['ClanPro', 'sans-serif'],
+        heading:   ['BreeBold', 'sans-serif'],
+        body:      ['system-ui', '-apple-system', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
         helvetica: ['HelveticaNeue', 'sans-serif'],
       },
       colors: {
@@ -86,7 +86,7 @@ tailwind.config = {
       document.body.classList.add('loading');
       document.body.insertAdjacentHTML('afterbegin', `
         <div id="loader-overlay">
-          <img src="${BASE}assets/logo-catolica.png" class="loader-logo" alt="Cargando Católica School...">
+          <img src="${BASE}assets/icono.png" class="loader-logo" alt="Cargando Católica School...">
         </div>
       `);
       obs.disconnect();

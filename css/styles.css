@@ -2,7 +2,7 @@
 /* Limitamos Bree al rango ASCII básico — los caracteres con tilde
    caen al siguiente fallback (system) que sí tiene glifos. */
 @font-face {
-  font-family: 'Bree';
+  font-family: 'BreeBold';
   src: url('../fonts/Bree_Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
@@ -10,7 +10,7 @@
   unicode-range: U+0020-007E;
 }
 @font-face {
-  font-family: 'Bree';
+  font-family: 'BreeRegular';
   src: url('../fonts/Bree_Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
@@ -62,12 +62,13 @@ body {
   margin: 0;
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: 'ClanPro', system-ui, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-weight: 400;
 }
 h1, h2, h3, h4, h5, h6 {
   /* Bree no contiene todos los glifos con tilde — fallback a system para esos caracteres */
-  font-family: 'Bree', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'BreeBold', 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-weight: 700;
   margin: 0;
 }

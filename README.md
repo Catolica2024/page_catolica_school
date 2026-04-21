@@ -46,7 +46,7 @@ npx serve .
 ## Características incluidas
 
 - ✅ **Tailwind CSS** vía CDN con configuración custom (colores HSL, tipografías)
-- ✅ **Tipografía corporativa**: Bree (títulos), ClanPro (cuerpo), HelveticaNeue (CTAs)
+- ✅ **Tipografía corporativa**: Bree (títulos y cuerpo), HelveticaNeue (CTAs)
 - ✅ **Navbar responsive** con dropdowns desktop (hover + delay 150ms) y submenús móviles (acordeón)
 - ✅ **Banner superior** cerrable
 - ✅ **FAQ acordeón** con animación de altura suave (vanilla JS, single-open)

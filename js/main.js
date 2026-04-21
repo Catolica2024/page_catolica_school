@@ -76,11 +76,126 @@ window.initInteractions = function () {
   /* ---------- Formulario de registro ---------- */
   const form = document.getElementById('registration-form');
   if (form) {
+    // Disable native HTML5 validation so we can show our own alerts
+    form.setAttribute('novalidate', 'true');
+    
+    // Ocultar mensajes de error al escribir o cambiar una opción y filtrar caracteres
+    const inputs = form.querySelectorAll('input, select');
+    inputs.forEach(input => {
+      const hideError = () => {
+        const errorEl = document.getElementById(`err-${input.name}`);
+        if (errorEl) {
+          errorEl.classList.add('hidden');
+        }
+      };
+      input.addEventListener('input', () => {
+        // Solo aceptar números en teléfono y DNI
+        if (input.name === 'telefono' || input.name === 'dni') {
+          input.value = input.value.replace(/\D/g, '');
+        }
+        hideError();
+      });
+      input.addEventListener('change', hideError);
+    });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-      console.log('Registro:', data);
-      alert('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.');
+      
+      const formData = new FormData(form);
+      const nombre = formData.get('nombre')?.trim();
+      const correo = formData.get('correo')?.trim();
+      const telefono = formData.get('telefono')?.trim();
+      const dni = formData.get('dni')?.trim();
+      const nivel = formData.get('nivel');
+      const consentimiento = form.querySelector('input[name="consentimiento"]').checked;
+      
+      // Ocultar todos los mensajes de error primero
+      document.getElementById('err-nombre').classList.add('hidden');
+      document.getElementById('err-correo').classList.add('hidden');
+      document.getElementById('err-telefono').classList.add('hidden');
+      document.getElementById('err-dni').classList.add('hidden');
+      document.getElementById('err-nivel').classList.add('hidden');
+      document.getElementById('err-consentimiento').classList.add('hidden');
+
+      let isValid = true;
+
+      // Validación de Nombre
+      if (!nombre) {
+        document.getElementById('err-nombre').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Validación de Correo
+      if (!correo) {
+        const errEl = document.getElementById('err-correo');
+        errEl.textContent = 'Por favor ingresa un correo electrónico.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        const errEl = document.getElementById('err-correo');
+        errEl.textContent = 'El formato del correo es inválido.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Validación de Teléfono (solo números, mínimo 9 dígitos)
+      if (!telefono) {
+        const errEl = document.getElementById('err-telefono');
+        errEl.textContent = 'Por favor ingresa tu teléfono.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      } else if (telefono.length < 9) {
+        const errEl = document.getElementById('err-telefono');
+        errEl.textContent = 'El teléfono debe tener al menos 9 dígitos.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Validación de DNI/Documento (solo números, 8 a 12 dígitos)
+      if (!dni) {
+        const errEl = document.getElementById('err-dni');
+        errEl.textContent = 'Por favor ingresa tu documento.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      } else if (dni.length < 8) {
+        const errEl = document.getElementById('err-dni');
+        errEl.textContent = 'El documento debe tener al menos 8 dígitos.';
+        errEl.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Validación de Nivel
+      if (!nivel) {
+        document.getElementById('err-nivel').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Validación de Consentimiento
+      if (!consentimiento) {
+        document.getElementById('err-consentimiento').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Si hay algún error, detenemos el envío
+      if (!isValid) {
+        return;
+      }
+      
+      const data = Object.fromEntries(formData.entries());
+      console.log('Registro exitoso:', data);
+      
+      const toast = document.getElementById('toast-success');
+      if (toast) {
+        toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+        }, 5000);
+      } else {
+        alert('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.');
+      }
+      
       form.reset();
     });
   }
