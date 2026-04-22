@@ -181,22 +181,49 @@ window.initInteractions = function () {
         return;
       }
       
-      const data = Object.fromEntries(formData.entries());
-      console.log('Registro exitoso:', data);
-      
-      const toast = document.getElementById('toast-success');
-      if (toast) {
-        toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-        toast.classList.add('opacity-100', 'translate-y-0');
-        setTimeout(() => {
-          toast.classList.remove('opacity-100', 'translate-y-0');
-          toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-        }, 5000);
-      } else {
-        alert('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.');
-      }
-      
-      form.reset();
+      // Mostrar estado de carga en el botón
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Enviando...';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70');
+
+      fetch('./procesar_correo.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          // Mostrar notificación de éxito
+          const toast = document.getElementById('toast-success');
+          if (toast) {
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+              toast.classList.remove('opacity-100', 'translate-y-0');
+              toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 5000);
+          } else {
+            alert('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.');
+          }
+          // Limpiar formulario
+          form.reset();
+        } else {
+          // Hubo un error devuelto por PHP (ej. falló el SMTP)
+          alert('Hubo un problema enviando el mensaje: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al intentar conectarse al servidor. Por favor, inténtalo de nuevo.');
+      })
+      .finally(() => {
+        // Restaurar el botón siempre
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-70');
+      });
     });
   }
 
