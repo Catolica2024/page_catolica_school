@@ -1,0 +1,16 @@
+{
+  "name": "page_catolica_school",
+  "version": "1.0.0",
+  "description": "Versión estática y completa del sitio, lista para servir.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./css/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./css/styles.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
