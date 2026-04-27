@@ -136,7 +136,7 @@ const FooterHTML = `
   <div class="container mx-auto px-4">
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
-        <img src="${BASE}assets/logo-catolica.png" alt="Católica School" class="h-16 object-contain mb-4" style="filter:brightness(0) invert(1);">
+        <img src="${BASE}assets/lema_catolica.png" alt="Católica School" class="object-contain mb-4" style="width: 100px; filter:brightness(0) invert(1);">
         <p class="text-sm leading-relaxed text-white/60">Formando líderes con valores, excelencia académica y visión global desde hace más de 20 años.</p>
       </div>
       <div>
