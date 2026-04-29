@@ -78,7 +78,7 @@ const NavbarHTML = `
       </li>
 
       <li><a href="${BASE}pages/trabaja-con-nosotros.html" class="font-heading text-sm font-semibold text-foreground hover:text-primary transition-colors">Trabaja con nosotros</a></li>
-      <li><a href="${BASE}pages/noticias.html" class="font-heading text-sm font-semibold text-foreground hover:text-primary transition-colors">Noticias</a></li>
+      <li><a href="${BASE}pages/noticias.php" class="font-heading text-sm font-semibold text-foreground hover:text-primary transition-colors">Noticias</a></li>
     </ul>
 
     <div class="hidden lg:flex items-center gap-3">
@@ -123,7 +123,7 @@ const NavbarHTML = `
     </div>
 
     <a href="${BASE}pages/trabaja-con-nosotros.html" class="block font-heading text-sm font-semibold text-foreground py-3">Trabaja con nosotros</a>
-    <a href="${BASE}pages/noticias.html" class="block font-heading text-sm font-semibold text-foreground py-3">Noticias</a>
+    <a href="${BASE}pages/noticias.php" class="block font-heading text-sm font-semibold text-foreground py-3">Noticias</a>
 
     <a href="${BASE}index.html#admision" class="block bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-3">Admisión 2026</a>
     <a href="https://www.peruschool.edu.pe/catolicaschool" target="_blank" rel="noopener" class="block bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-2">Intranet</a>
@@ -145,7 +145,7 @@ const FooterHTML = `
           <li><a href="${BASE}index.html" class="hover:text-accent transition-colors">Inicio</a></li>
           <li><a href="${BASE}pages/quienes-somos.html" class="hover:text-accent transition-colors">¿Quiénes somos?</a></li>
           <li><a href="${BASE}pages/proceso-admision.html" class="hover:text-accent transition-colors">Admisión</a></li>
-          <li><a href="${BASE}pages/noticias.html" class="hover:text-accent transition-colors">Noticias</a></li>
+          <li><a href="${BASE}pages/noticias.php" class="hover:text-accent transition-colors">Noticias</a></li>
           <li><a href="${BASE}pages/trabaja-con-nosotros.html" class="hover:text-accent transition-colors">Trabaja con nosotros</a></li>
         </ul>
       </div>
