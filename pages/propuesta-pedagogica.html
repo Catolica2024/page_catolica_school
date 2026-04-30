@@ -42,94 +42,81 @@
     </section>
 
     <section class="py-20">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-14 max-w-2xl mx-auto reveal">
-          <h2 class="font-heading text-3xl font-extrabold text-foreground mb-4">Nuestros Pilares</h2>
-          <p class="text-muted-foreground">Nuestra propuesta educativa se fundamenta en pilares que integran el
-            desarrollo socioemocional, el aprendizaje activo, la internacionalización y la innovación tecnológica,
-            garantizando una formación integral de excelencia.</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-          <div
-            class="reveal bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow group border border-border">
-            <div
-              class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.5 4.04 3 5.5l7 7Z" />
+        <div class="container mx-auto px-4 max-w-7xl">
+          <div class="text-center mb-14 max-w-2xl mx-auto reveal">
+            <h2 class="font-heading text-3xl font-extrabold text-foreground mb-4">Nuestros Pilares</h2>
+            <p class="text-muted-foreground">Nuestra propuesta educativa se fundamenta en pilares que integran el desarrollo socioemocional, el aprendizaje activo, la internacionalización y la innovación tecnológica, garantizando una formación integral de excelencia.</p>
+          </div>
+        <style>
+          .pilar-card {
+            width: 100% !important;
+            flex: 0 0 auto !important;
+          }
+          @media (min-width: 768px) {
+            .pilar-card {
+              width: calc(50% - 10px) !important;
+            }
+          }
+          @media (min-width: 1024px) {
+            .pilar-card {
+              width: calc(33.333% - 14px) !important;
+            }
+          }
+        </style>
+        <div class="flex flex-wrap justify-center" style="gap: 20px;">
+          <!-- Card 1 -->
+          <div class="reveal bg-card rounded-xl py-4 px-6 shadow-sm hover:shadow-md transition-shadow group border border-border pilar-card">
+            <div class="w-12 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-3 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.5 4.04 3 5.5l7 7Z" />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-bold text-foreground mb-2">Pensamiento Emocional</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">Acompañamos en el desarrollo de un perfil ético y
-              de
-              valores que pone en práctica habilidades para gestionar emociones; así como, para relacionarse de manera
-              empática y efectiva, demostrando competencias de inteligencia emocional.</p>
+            <h3 class="font-heading text-lg font-bold text-foreground mb-1">Pensamiento Emocional</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">Acompañamos en el desarrollo de un perfil ético y de valores que pone en práctica habilidades para gestionar emociones; así como, para relacionarse de manera empática y efectiva, demostrando competencias de inteligencia emocional.</p>
           </div>
 
-          <div
-            class="reveal bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow group border border-border">
-            <div
-              class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5" />
+          <!-- Card 2 -->
+          <div class="reveal bg-card rounded-xl py-4 px-6 shadow-sm hover:shadow-md transition-shadow group border border-border pilar-card">
+            <div class="w-12 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-3 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5" />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-bold text-foreground mb-2">Aprendizaje Basado en Proyectos</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">Fomentamos la investigación y el pensamiento
-              crítico, capacitando a nuestros alumnos para resolver problemas de manera creativa y colaborativa.</p>
+            <h3 class="font-heading text-lg font-bold text-foreground mb-1">Aprendizaje Basado en Proyectos</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">Fomentamos la investigación y el pensamiento crítico, capacitando a nuestros alumnos para resolver problemas de manera creativa y colaborativa.</p>
           </div>
 
-          <div
-            class="reveal bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow group border border-border">
-            <div
-              class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          <!-- Card 3 -->
+          <div class="reveal bg-card rounded-xl py-4 px-6 shadow-sm hover:shadow-md transition-shadow group border border-border pilar-card">
+            <div class="w-12 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-3 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-bold text-foreground mb-2">Internacionalización</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">Implementamos un programa bilingüe que prepara a
-              los estudiantes para ser ciudadanos del mundo, dominando idiomas y comprendiendo diversas culturas.</p>
+            <h3 class="font-heading text-lg font-bold text-foreground mb-1">Internacionalización</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">Implementamos un programa bilingüe que prepara a los estudiantes para ser ciudadanos del mundo, dominando idiomas y comprendiendo diversas culturas.</p>
           </div>
 
-          <div
-            class="reveal bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow group border border-border">
-            <div
-              class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Card 4 -->
+          <div class="reveal bg-card rounded-xl py-4 px-6 shadow-sm hover:shadow-md transition-shadow group border border-border pilar-card">
+            <div class="w-12 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-3 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-bold text-foreground mb-2">Innovación</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">Ponemos en práctica estrategias de metodologías
-              ágiles para la resolución de problemas. Además, desarrollamos habilidades para poner en uso herramientas
-              digitales que potencian los aprendizajes para el futuro.</p>
+            <h3 class="font-heading text-lg font-bold text-foreground mb-1">Innovación</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">Ponemos en práctica estrategias de metodologías áiles para la resolución de problemas. Además, desarrollamos habilidades para poner en uso herramientas digitales que potencian los aprendizajes para el futuro.</p>
           </div>
 
-          <div
-            class="reveal bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow group border border-border lg:col-start-2">
-            <div
-              class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
-                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
-                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
-                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-                <path
-                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1-.3-.3-.5-.7-.5-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-4.4-4.5-9-10-9z" />
+          <!-- Card 5 -->
+          <div class="reveal bg-card rounded-xl py-4 px-6 shadow-sm hover:shadow-md transition-shadow group border border-border pilar-card">
+            <div class="w-12 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-3 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1-.3-.3-.5-.7-.5-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-4.4-4.5-9-10-9z" />
               </svg>
             </div>
-            <h3 class="font-heading text-lg font-bold text-foreground mb-2">Arte y Deporte</h3>
-            <p class="text-muted-foreground text-sm leading-relaxed">Promovemos la apreciación por el arte y el
-              desarrollo físico del educando, reconociendo la importancia de una educación integral.</p>
+            <h3 class="font-heading text-lg font-bold text-foreground mb-1">Arte y Deporte</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">Promovemos la apreciación por el arte y el desarrollo físico del educando, reconociendo la importancia de una educación integral.</p>
           </div>
         </div>
       </div>
