@@ -38,7 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $new_name = uniqid() . '.' . $ext;
             $upload_dir = '../assets/uploads/';
             
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0755, true);
+            }
+            
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $upload_dir . $new_name)) {
+                // Borrar la imagen anterior si existe
+                if ($noticia['imagen']) {
+                    $old_file = '../' . $noticia['imagen'];
+                    if (file_exists($old_file)) {
+                        unlink($old_file);
+                    }
+                }
                 $imagen_url = 'assets/uploads/' . $new_name;
             }
         }

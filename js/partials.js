@@ -35,7 +35,6 @@ const nosotrosItems = [
 const admisionItems = [
   { label: 'Proceso de admisión', href: 'proceso-admision.html' },
   { label: 'Traslados', href: 'traslados.html' },
-  { label: 'Preguntas frecuentes', href: 'preguntas-frecuentes.html' },
 ];
 
 const dropdownItems = (items) => items.map(it => `
@@ -184,8 +183,8 @@ const FooterHTML = `
 /* ----- WhatsApp Button ----- */
 const WhatsAppHTML = `
 <a href="https://wa.me/51906026820?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Cat%C3%B3lica%20School" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"
-   class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-whatsapp text-whatsapp-foreground rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform animate-float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-whatsapp text-whatsapp-foreground rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform animate-float">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
     <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
   </svg>
 </a>`;
@@ -207,6 +206,70 @@ const SocialSidebarHTML = `
   </a>
 </div>`;
 
+/* ----- FAQ Chat ----- */
+const FaqChatHTML = `
+<div id="faq-chat-container" class="faq-fixed faq-bottom-24 faq-right-6 faq-flex faq-flex-col faq-items-end" style="z-index: 9999;">
+  <!-- Botón Flotante FAQ -->
+  <button id="faq-chat-trigger" aria-label="Preguntas frecuentes"
+          class="faq-w-14 faq-h-14 faq-bg-primary faq-text-primary-foreground faq-rounded-full faq-flex faq-items-center faq-justify-center faq-shadow-xl faq-hover-scale-110 faq-transition-transform faq-animate-float faq-mb-2" style="z-index: 10000;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+  </button>
+
+  <!-- Ventana de Chat -->
+  <div id="faq-chat-window" class="faq-hidden faq-w-[350px] faq-max-w-[90vw] faq-h-[500px] faq-bg-card faq-rounded-2xl faq-shadow-2xl faq-flex faq-flex-col faq-overflow-hidden faq-border faq-border-border">
+    <!-- Header -->
+    <div class="faq-bg-primary faq-p-4 faq-flex faq-items-center faq-justify-between faq-text-primary-foreground">
+      <div class="faq-flex faq-items-center faq-gap-3">
+        <div class="faq-w-10 faq-h-10 faq-rounded-full faq-bg-white-20 faq-flex faq-items-center faq-justify-center">
+          <img src="${BASE}assets/icono.png" class="faq-w-6 faq-h-6 logo-white" alt="Logo">
+        </div>
+        <div>
+          <h4 class="faq-font-heading faq-font-bold faq-text-sm">Católica School</h4>
+          <span class="faq-text-[10px] faq-opacity-80 faq-flex faq-items-center faq-gap-1">
+            <span class="faq-w-1.5 faq-h-1.5 faq-bg-green-400 faq-rounded-full"></span> Respuesta instantánea
+          </span>
+        </div>
+      </div>
+      <button id="faq-chat-close" class="faq-hover-bg-white-10 faq-p-1 faq-rounded-lg faq-transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div id="faq-chat-body" class="faq-flex-1 faq-overflow-y-auto faq-p-4 faq-space-y-4 faq-bg-muted-30">
+      <div class="chat-msg system faq-bg-white faq-rounded-2xl faq-rounded-tl-none faq-p-3 faq-shadow-sm faq-text-sm faq-text-foreground faq-max-w-[85%] faq-border faq-border-border">
+        ¡Hola! 👋 Soy el asistente virtual de Católica School. ¿En qué podemos ayudarte hoy? Selecciona una de las dudas más comunes:
+      </div>
+      
+      <div id="faq-options" class="faq-flex faq-flex-col faq-gap-2">
+        <!-- Opciones se inyectan aquí -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="faq-p-3 faq-border-t faq-bg-card faq-text-center">
+      <a href="https://wa.me/51906026820" target="_blank" class="faq-text-primary faq-font-bold faq-text-xs faq-hover-underline faq-flex faq-items-center faq-justify-center faq-gap-1">
+        ¿Aún tienes dudas? Habla con nosotros <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 22 3 22 10"></polyline><line x1="10" y1="14" x2="22" y2="2"></line></svg>
+      </a>
+    </div>
+  </div>
+</div>`;
+
+const FAQ_DATA = [
+  { q: "¿Cuáles son los niveles educativos?", a: "Católica School ofrece los niveles de Inicial (3, 4 y 5 años), Primaria (1° a 6° grado) y Secundaria (1° a 5° año)." },
+  { q: "¿Cuál es el horario de clases?", a: "El horario regular es de 7:30 a.m. a 3:00 p.m. para Primaria y Secundaria, y de 8:00 a.m. a 1:00 p.m. para Inicial. Los talleres extracurriculares se realizan en horario extendido." },
+  { q: "¿Cuentan con programa bilingüe?", a: "Sí, contamos con un programa bilingüe español-inglés desde el nivel Inicial, con certificación Cambridge y profesores nativos." },
+  { q: "¿Qué actividades extracurriculares ofrecen?", a: "Ofrecemos talleres de natación, fútbol, vóley, básquet, arte, música, teatro, robótica, ajedrez y más." },
+  { q: "¿Cómo es el proceso de admisión?", a: "El proceso incluye solicitud de información, visita guiada, entrega de documentos, evaluación diagnóstica y matrícula." },
+  { q: "¿Ofrecen transporte escolar?", a: "Sí, contamos con servicio de transporte escolar con rutas que cubren las principales zonas de la ciudad." },
+  { q: "¿Cuáles son las formas de pago?", a: "Aceptamos pagos en efectivo, transferencia bancaria y tarjetas de crédito/débito. También ofrecemos facilidades de pago fraccionado." },
+  { q: "¿Cuentan con servicio de alimentación?", a: "Sí, contamos con cafetería escolar que ofrece menús balanceados y nutritivos supervisados por un nutricionista." }
+];
+
 /* ----- Inyección ----- */
 function injectPartials() {
   const slot = (id, html) => {
@@ -218,6 +281,80 @@ function injectPartials() {
   slot('partial-footer', FooterHTML);
   slot('partial-whatsapp', WhatsAppHTML);
   slot('partial-social', SocialSidebarHTML);
+
+  // FAQ Chat Injection
+  let faqContainer = document.getElementById('partial-faq');
+  if (!faqContainer) {
+    faqContainer = document.createElement('div');
+    faqContainer.id = 'partial-faq';
+    document.body.appendChild(faqContainer);
+  }
+  faqContainer.innerHTML = FaqChatHTML;
+  initFaqChat();
+}
+
+function initFaqChat() {
+  const trigger = document.getElementById('faq-chat-trigger');
+  const windowEl = document.getElementById('faq-chat-window');
+  const closeBtn = document.getElementById('faq-chat-close');
+  const optionsEl = document.getElementById('faq-options');
+  const bodyEl = document.getElementById('faq-chat-body');
+
+  if (!trigger || !windowEl) return;
+  console.log('FAQ Chat Initialized');
+
+  const toggleChat = () => {
+    windowEl.classList.toggle('faq-hidden');
+  };
+
+  trigger.addEventListener('click', toggleChat);
+  closeBtn.addEventListener('click', toggleChat);
+
+  const renderOptions = () => {
+    optionsEl.innerHTML = FAQ_DATA.map((item, index) => `
+      <button class="faq-opt-btn bg-white border border-primary/20 text-primary text-xs font-semibold py-2 px-3 rounded-xl hover:bg-primary hover:text-white transition-all text-left" data-index="${index}">
+        ${item.q}
+      </button>
+    `).join('');
+
+    document.querySelectorAll('.faq-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const index = btn.dataset.index;
+        const qa = FAQ_DATA[index];
+        addMessage(qa.q, 'user');
+        optionsEl.innerHTML = ''; // Limpiar opciones mientras responde
+        
+        setTimeout(() => {
+          addMessage(qa.a, 'system');
+          setTimeout(() => {
+            const backBtn = document.createElement('button');
+            backBtn.className = "mt-4 text-xs font-bold text-primary hover:underline self-center";
+            backBtn.textContent = "Ver otras preguntas";
+            backBtn.onclick = renderOptions;
+            bodyEl.appendChild(backBtn);
+            bodyEl.scrollTop = bodyEl.scrollHeight;
+          }, 400);
+        }, 600);
+      });
+    });
+  };
+
+  const addMessage = (text, type) => {
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${type} faq-rounded-2xl faq-p-3 faq-shadow-sm faq-text-sm faq-max-w-[85%] faq-animate-fade-in faq-border faq-border-border`;
+    if (type === 'user') {
+      msg.className += ' faq-bg-primary faq-text-white faq-self-end faq-rounded-tr-none';
+      msg.style.alignSelf = 'flex-end';
+    } else {
+      msg.className += ' faq-bg-white faq-text-foreground faq-self-start faq-rounded-tl-none';
+      msg.style.alignSelf = 'flex-start';
+    }
+    msg.textContent = text;
+    bodyEl.appendChild(msg);
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  };
+
+  renderOptions();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

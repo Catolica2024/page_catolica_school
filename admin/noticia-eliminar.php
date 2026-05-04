@@ -7,7 +7,18 @@ $id = $_GET['id'] ?? null;
 
 if ($id) {
     try {
-        // Opcional: podrías eliminar el archivo físico de la imagen aquí
+        // Obtener la ruta de la imagen antes de borrar
+        $stmt = $pdo->prepare("SELECT imagen FROM noticias WHERE id = ?");
+        $stmt->execute([$id]);
+        $noticia = $stmt->fetch();
+
+        if ($noticia && $noticia['imagen']) {
+            $file_path = '../' . $noticia['imagen'];
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+        }
+
         $stmt = $pdo->prepare("DELETE FROM noticias WHERE id = ?");
         $stmt->execute([$id]);
     } catch (Exception $e) {

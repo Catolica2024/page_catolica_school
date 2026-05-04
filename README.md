@@ -15,7 +15,7 @@ catolica-html/
 │   ├── proceso-admision.html
 │   ├── traslados.html
 │   ├── plataforma-postulantes.html
-│   ├── preguntas-frecuentes.html
+
 │   ├── trabaja-con-nosotros.html
 │   └── noticias.html
 ├── css/styles.css                  # Tokens HSL, fuentes, animaciones
