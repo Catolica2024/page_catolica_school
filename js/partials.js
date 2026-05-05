@@ -13,8 +13,8 @@ const BASE = (() => {
 const TopBannerHTML = `
 <div id="top-banner" class="bg-banner text-banner-foreground py-3 px-4 text-center text-sm font-medium relative">
   <span>
-    ¡Asiste a nuestro <strong>Open Day</strong> este <strong>25 de Octubre</strong>!
-    <a href="${BASE}index.html#admision" class="underline font-bold hover:opacity-80 transition-opacity">Regístrate aquí</a>
+    ¡Trasládate a <strong>Católica School</strong>!
+    <a href="https://wa.me/51906026820?text=Hola,%20quiero%20más%20información%20sobre%20los%20traslados" target="_blank" rel="noopener" class="underline font-bold hover:opacity-80 transition-opacity">Recibe más información aquí</a>
   </span>
   <button id="top-banner-close" aria-label="Cerrar banner"
           class="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-70 transition-opacity">
@@ -169,7 +169,7 @@ const FooterHTML = `
         <h4 class="font-heading font-bold text-white mb-4">Ubicación</h4>
         <div class="rounded-xl overflow-hidden border border-white/10">
           <iframe title="Ubicación Católica School"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.123!2d-77.0428!3d-11.8500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDUxJzAwLjAiUyA3N8KwMDInMzQuMSJX!5e0!3m2!1ses!2spe!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.3896595306455!2d-77.03401242405351!3d-11.87793223878208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d0b8c515cd2f%3A0x72d08cfea0969124!2sCat%C3%B3lica%20School!5e0!3m2!1ses-419!2spe!4v1777991324244!5m2!1ses-419!2spe"
             width="100%" height="180" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
@@ -260,14 +260,38 @@ const FaqChatHTML = `
 </div>`;
 
 const FAQ_DATA = [
-  { q: "¿Cuáles son los niveles educativos?", a: "Católica School ofrece los niveles de Inicial (3, 4 y 5 años), Primaria (1° a 6° grado) y Secundaria (1° a 5° año)." },
-  { q: "¿Cuál es el horario de clases?", a: "El horario regular es de 7:30 a.m. a 3:00 p.m. para Primaria y Secundaria, y de 8:00 a.m. a 1:00 p.m. para Inicial. Los talleres extracurriculares se realizan en horario extendido." },
-  { q: "¿Cuentan con programa bilingüe?", a: "Sí, contamos con un programa bilingüe español-inglés desde el nivel Inicial, con certificación Cambridge y profesores nativos." },
-  { q: "¿Qué actividades extracurriculares ofrecen?", a: "Ofrecemos talleres de natación, fútbol, vóley, básquet, arte, música, teatro, robótica, ajedrez y más." },
-  { q: "¿Cómo es el proceso de admisión?", a: "El proceso incluye solicitud de información, visita guiada, entrega de documentos, evaluación diagnóstica y matrícula." },
-  { q: "¿Ofrecen transporte escolar?", a: "Sí, contamos con servicio de transporte escolar con rutas que cubren las principales zonas de la ciudad." },
-  { q: "¿Cuáles son las formas de pago?", a: "Aceptamos pagos en efectivo, transferencia bancaria y tarjetas de crédito/débito. También ofrecemos facilidades de pago fraccionado." },
-  { q: "¿Cuentan con servicio de alimentación?", a: "Sí, contamos con cafetería escolar que ofrece menús balanceados y nutritivos supervisados por un nutricionista." }
+  { 
+    q: "¿Cuáles son los niveles educativos que ofrece el Colegio?", 
+    a: "Son 3 los niveles educativos que ofrece el Colegio:\n- Early Years (Inicial y 1er. Grado)\n- Elementary (Primaria de 2do. A 5to. grado)\n- Middle y High School (6to. grado y Secundaria)" 
+  },
+  { 
+    q: "¿Cuál es el horario de clases?", 
+    a: "• 3 años: 7:45 a 1:15 p.m.\n• 4 años: 7:45 a 1:15 p.m.\n• 5 años: 7:45 a 1:15 p.m.\n• 1er. Grado: 7:30 a 2:20 p.m.\n• 2do a 5to. grado: 7:30 a 2:20 p.m.\n• 6to. a V año: 7:30 a 3:00 p.m." 
+  },
+  { 
+    q: "¿El Colegio cuenta con programa Bilingue?", 
+    a: "Si contamos con un programa Bilingüe en proceso: En este proceso tenemos 7 horas de Inglés a la semana y un curso (Science) en Primaria que se imparte en el Idioma Inglés." 
+  },
+  { 
+    q: "¿Cuáles son las actividades extracurriculares disponibles?", 
+    a: "Tenemos diversos Talleres:\n- Gimnasia\n- Vóley\n- Ballet\n- Estimulación temprana y adaptación\n- Teatro\n- Natación" 
+  },
+  { 
+    q: "¿Cómo es el proceso de admisión?", 
+    a: "Nuestro proceso consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina para orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones y propuesta pedagógica.\n\n3. Entrega de documentos\nPresente la documentación requerida (DNI, libreta, no adeudo, conducta).\n\n4. Evaluación\nEvaluación diagnóstica con el acompañamiento de su familia.\n\n5. Matrícula\nFormalización de la matrícula con su asesora asignada." 
+  },
+  { 
+    q: "¿Ofrecen servicio de transporte escolar?", 
+    a: "No lo ofrecemos directamente; sin embargo, existen movilidades externas que brindan el servicio y de las cuales podemos dar referencia solo a solicitud." 
+  },
+  { 
+    q: "¿Cuáles son las formas de pago?", 
+    a: "Se pueden realizar pagos con tarjetas de débito, crédito, Yape, Plin y Pago Efectivo." 
+  },
+  { 
+    q: "¿El colegio cuenta con servicio de alimentación?", 
+    a: "Sí, contamos con un concesionario (cafetería) dentro de la escuela." 
+  }
 ];
 
 /* ----- Inyección ----- */
