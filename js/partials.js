@@ -262,35 +262,35 @@ const FaqChatHTML = `
 const FAQ_DATA = [
   { 
     q: "¿Cuáles son los niveles educativos que ofrece el Colegio?", 
-    a: "Son 3 los niveles educativos que ofrece el Colegio:\n- Early Years (Inicial y 1er. Grado)\n- Elementary (Primaria de 2do. A 5to. grado)\n- Middle y High School (6to. grado y Secundaria)" 
+    a: "En Católica School contamos con tres niveles educativos:\n\n• Early Years: Inicial y 1.er grado\n• Elementary: de 2.º a 5.º grado de primaria\n• Middle & High School: de 6.º grado de primaria a 5.º de secundaria" 
   },
   { 
     q: "¿Cuál es el horario de clases?", 
-    a: "• 3 años: 7:45 a 1:15 p.m.\n• 4 años: 7:45 a 1:15 p.m.\n• 5 años: 7:45 a 1:15 p.m.\n• 1er. Grado: 7:30 a 2:20 p.m.\n• 2do a 5to. grado: 7:30 a 2:20 p.m.\n• 6to. a V año: 7:30 a 3:00 p.m." 
+    a: "Los horarios de clase se organizan por nivel educativo:\n\nInicial\n• 3, 4 y 5 años: de 7:45 a.m. a 1:15 p.m.\n\nPrimaria\n• 1º: de 7:30 a.m. a 2:20 p.m.\n• De 2do a 6to: de 7:30 a.m. a 2:20 p.m.\n\nSecundaria\n• De 1er a 5to año: de 7:30 a.m. a 3:00 p.m." 
   },
   { 
     q: "¿El Colegio cuenta con programa Bilingue?", 
-    a: "Si contamos con un programa Bilingüe en proceso: En este proceso tenemos 7 horas de Inglés a la semana y un curso (Science) en Primaria que se imparte en el Idioma Inglés." 
+    a: "Contamos con un programa bilingüe en desarrollo. Actualmente, los estudiantes reciben 7 horas de inglés a la semana.\n\nEn el nivel de primaria (de 1.er a 6.º grado), dentro de esta carga horaria se incluyen 2 horas del curso de Science, el cual se desarrolla íntegramente en inglés. Estas sesiones están diseñadas como experiencias de aprendizaje 100% en este segundo idioma, promoviendo la comprensión, exploración y aplicación de contenidos de manera natural y contextualizada." 
   },
   { 
     q: "¿Cuáles son las actividades extracurriculares disponibles?", 
-    a: "Tenemos diversos Talleres:\n- Gimnasia\n- Vóley\n- Ballet\n- Estimulación temprana y adaptación\n- Teatro\n- Natación" 
+    a: "Nuestros estudiantes pueden acceder a los talleres extracurriculares a través de Católica Kids Club, donde ofrecen diversas opciones para complementar su desarrollo integral:\n\n• Gimnasia\n• Vóley\n• Ballet\n• Estimulación temprana y adaptación\n• Teatro\n• Natación" 
   },
   { 
     q: "¿Cómo es el proceso de admisión?", 
-    a: "Nuestro proceso consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina para orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones y propuesta pedagógica.\n\n3. Entrega de documentos\nPresente la documentación requerida (DNI, libreta, no adeudo, conducta).\n\n4. Evaluación\nEvaluación diagnóstica con el acompañamiento de su familia.\n\n5. Matrícula\nFormalización de la matrícula con su asesora asignada." 
+    a: "Nuestro proceso de admisión consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina de admisión para recibir orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones, propuesta pedagógica y equipo docente.\n\n3. Entrega de documentos\nPresente la documentación requerida: DNI, libreta de notas, carta de no adeudo y constancia de conducta.\n\n4. Evaluación\nEl postulante participará en una evaluación diagnóstica acorde a la vacante a la que aplica, con el acompañamiento de su familia.\n\n5. Matrícula\nUna vez aprobado el proceso, podrá formalizar la matrícula con el acompañamiento de la asesora asignada." 
   },
   { 
     q: "¿Ofrecen servicio de transporte escolar?", 
-    a: "No lo ofrecemos directamente; sin embargo, existen movilidades externas que brindan el servicio y de las cuales podemos dar referencia solo a solicitud." 
+    a: "Actualmente, el colegio no brinda servicio de transporte escolar. Sin embargo, existen movilidades externas que ofrecen este servicio. Podemos compartir algunas referencias, previa solicitud." 
   },
   { 
     q: "¿Cuáles son las formas de pago?", 
-    a: "Se pueden realizar pagos con tarjetas de débito, crédito, Yape, Plin y Pago Efectivo." 
+    a: "Aceptamos pagos a través de tarjetas de débito y crédito, así como mediante Yape, Plin y pago en efectivo." 
   },
   { 
     q: "¿El colegio cuenta con servicio de alimentación?", 
-    a: "Sí, contamos con un concesionario (cafetería) dentro de la escuela." 
+    a: "Contamos con un concesionario dentro de la escuela, que brinda servicio de alimentación para nuestros estudiantes." 
   }
 ];
 
@@ -351,12 +351,20 @@ function initFaqChat() {
         setTimeout(() => {
           addMessage(qa.a, 'system');
           setTimeout(() => {
-            const backBtn = document.createElement('button');
-            backBtn.className = "mt-4 text-xs font-bold text-primary hover:underline self-center";
-            backBtn.textContent = "Ver otras preguntas";
-            backBtn.onclick = renderOptions;
-            bodyEl.appendChild(backBtn);
-            bodyEl.scrollTop = bodyEl.scrollHeight;
+            renderOptions(); // Las opciones se cargan abajo
+            
+            // Agregar aviso discreto de que hay más preguntas abajo
+            const hint = document.createElement('button');
+            hint.className = "faq-text-primary faq-font-bold faq-flex faq-items-center faq-gap-1 faq-mx-auto faq-mt-2 faq-hover-underline faq-transition-colors faq-animate-fade-in";
+            hint.style.fontSize = "10px";
+            hint.style.opacity = "0.6";
+            hint.style.margin = "0 auto";
+            hint.innerHTML = `Ver más preguntas <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
+            hint.onclick = () => {
+              bodyEl.scrollTo({ top: bodyEl.scrollHeight, behavior: 'smooth' });
+              hint.remove(); // Quitar el aviso al bajar
+            };
+            bodyEl.insertBefore(hint, optionsEl);
           }, 400);
         }, 600);
       });
@@ -374,8 +382,15 @@ function initFaqChat() {
       msg.style.alignSelf = 'flex-start';
     }
     msg.textContent = text;
-    bodyEl.appendChild(msg);
-    bodyEl.scrollTop = bodyEl.scrollHeight;
+    
+    // Insertar ANTES de las opciones
+    bodyEl.insertBefore(msg, optionsEl);
+    
+    setTimeout(() => {
+      // Si es sistema, enfocamos el inicio del mensaje. Si es usuario, vamos al final.
+      const targetScroll = type === 'system' ? msg.offsetTop - 10 : bodyEl.scrollHeight;
+      bodyEl.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }, 50);
   };
 
   renderOptions();
