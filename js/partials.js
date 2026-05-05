@@ -266,10 +266,10 @@ const FAQ_DATA = [
   },
   { 
     q: "¿Cuál es el horario de clases?", 
-    a: "Los horarios de clase se organizan por nivel educativo:\n\nInicial\n• 3, 4 y 5 años: de 7:45 a.m. a 1:15 p.m.\n\nPrimaria\n• 1º: de 7:30 a.m. a 2:20 p.m.\n• De 2do a 6to: de 7:30 a.m. a 2:20 p.m.\n\nSecundaria\n• De 1er a 5to año: de 7:30 a.m. a 3:00 p.m." 
+    a: "Los horarios de clase se organizan por nivel educativo:\n\nInicial\n• 3, 4 y 5 años: de 7:45 a.m. a 1:15 p.m.\n\nPrimaria\n• 1er grado: de 7:30 a.m. a 2:20 p.m.\n• De 2do a 6to grado: de 7:30 a.m. a 2:20 p.m.\n\nSecundaria\n• De 1er a 5to año: de 7:30 a.m. a 3:00 p.m." 
   },
   { 
-    q: "¿El Colegio cuenta con programa Bilingue?", 
+    q: "¿El Colegio cuenta con programa Bilingüe?", 
     a: "Contamos con un programa bilingüe en desarrollo. Actualmente, los estudiantes reciben 7 horas de inglés a la semana.\n\nEn el nivel de primaria (de 1.er a 6.º grado), dentro de esta carga horaria se incluyen 2 horas del curso de Science, el cual se desarrolla íntegramente en inglés. Estas sesiones están diseñadas como experiencias de aprendizaje 100% en este segundo idioma, promoviendo la comprensión, exploración y aplicación de contenidos de manera natural y contextualizada." 
   },
   { 
