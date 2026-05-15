@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Incluir los archivos de la librería PHPMailer
+// Incluir los archivos de la libreria PHPMailer
 require 'PHPMailer-6.9.1/src/Exception.php';
 require 'PHPMailer-6.9.1/src/PHPMailer.php';
 require 'PHPMailer-6.9.1/src/SMTP.php';
@@ -11,45 +11,44 @@ require 'PHPMailer-6.9.1/src/SMTP.php';
 header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recibir los datos del formulario (se envían por FormData en JS)
-    $nombre = $_POST['nombre'] ?? '';
-    $correo = $_POST['correo'] ?? '';
-    $telefono = $_POST['telefono'] ?? '';
-    $dni = $_POST['dni'] ?? '';
-    $nivel = $_POST['nivel'] ?? '';
 
-    // Validación básica de seguridad en el backend
+    // Recibir y sanear datos del formulario
+    $nombre   = trim($_POST['nombre']   ?? '');
+    $correo   = trim($_POST['correo']   ?? '');
+    $telefono = trim($_POST['telefono'] ?? '');
+    $dni      = trim($_POST['dni']      ?? '');
+    $nivel    = trim($_POST['nivel']    ?? '');
+
+    // Validacion basica en el backend
     if (empty($nombre) || empty($correo)) {
         echo json_encode(["status" => "error", "message" => "Faltan datos obligatorios."]);
         exit;
     }
 
+    // ── Correo SMTP via PHPMailer ────────────────────────────────────────────
+    // (Google Sheets lo maneja el JS del navegador directamente)
     $mail = new PHPMailer(true);
 
     try {
-        // --- 1. Configuración del Servidor SMTP ---
+        // Configuracion del servidor SMTP
         $mail->isSMTP();
-        $mail->Host       = 'catolicaschool.edu.pe'; 
+        $mail->Host       = 'catolicaschool.edu.pe';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'notiweb@catolicaschool.edu.pe';
         $mail->Password   = 'Cato2026Web';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Para puerto 465 (SSL/TLS estricto)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
-        $mail->CharSet    = 'UTF-8'; // Para asegurar las tildes y ñ
+        $mail->CharSet    = 'UTF-8';
 
-        // --- 2. Remitente y Destinatarios ---
-        // Desde quién se envía (Debe coincidir con la cuenta autenticada para evitar SPAM)
-        $mail->setFrom('notiweb@catolicaschool.edu.pe', 'Web Católica School');
-        // A dónde llega el correo final (tu buzón de pruebas / admisiones)
-        $mail->addAddress('correoprueba@colegiolacatolica.edu.pe', 'Admisiones Católica School');
-        // Si quieres responder el correo, que la respuesta vaya al usuario
+        // Remitente y destinatario
+        $mail->setFrom('notiweb@catolicaschool.edu.pe', 'Web Catolica School');
+        $mail->addAddress('admision@colegiolacatolica.edu.pe', 'Admisiones Catolica School');
         $mail->addReplyTo($correo, $nombre);
 
-        // --- 3. Contenido del Correo (Plantilla HTML Premium) ---
+        // Contenido del correo
         $mail->isHTML(true);
         $mail->Subject = 'Nuevo registro web: ' . $nombre . ' - Nivel ' . ucfirst($nivel);
-        
-        // Colores extraídos del CSS: Primary=hsl(223, 100%, 55%) | Accent=hsl(49, 90%, 60%)
+
         $mail->Body = '
         <!DOCTYPE html>
         <html>
@@ -72,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container">
                 <div class="header">
                     <h1>Nuevo Registro Web</h1>
-                    <p>Católica School</p>
+                    <p>Catolica School — Admision 2027</p>
                 </div>
                 <div class="content">
                     <h2>Detalles del prospecto</h2>
@@ -82,11 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td>' . htmlspecialchars($nombre) . '</td>
                         </tr>
                         <tr>
-                            <th>Correo Electrónico</th>
+                            <th>Correo Electronico</th>
                             <td><a href="mailto:' . htmlspecialchars($correo) . '" style="color: hsl(223, 100%, 55%);">' . htmlspecialchars($correo) . '</a></td>
                         </tr>
                         <tr>
-                            <th>Teléfono</th>
+                            <th>Telefono</th>
                             <td>' . htmlspecialchars($telefono) . '</td>
                         </tr>
                         <tr>
@@ -94,30 +93,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <td>' . htmlspecialchars($dni) . '</td>
                         </tr>
                         <tr>
-                            <th>Nivel de Interés</th>
+                            <th>Nivel de Interes</th>
                             <td><span style="display:inline-block; padding:4px 10px; background:hsl(49, 90%, 60%); color:#000; border-radius:12px; font-size:13px; font-weight:bold;">' . ucfirst(htmlspecialchars($nivel)) . '</span></td>
                         </tr>
                     </table>
                 </div>
                 <div class="footer">
-                    Este mensaje fue enviado automáticamente desde el formulario de la página web de Católica School.
+                    Este mensaje fue enviado automaticamente desde el formulario de la pagina web de Catolica School.
                 </div>
             </div>
         </body>
         </html>';
 
-        // Intentar enviar
         $mail->send();
-        
-        // Retornar éxito
+
         echo json_encode(["status" => "success", "message" => "Mensaje enviado."]);
-        
+
     } catch (Exception $e) {
-        // En caso de error, devolver detalles (útil para diagnosticar al subirlo a cPanel)
+        error_log("PHPMailer SMTP Error: " . $mail->ErrorInfo);
         echo json_encode(["status" => "error", "message" => "El mensaje no pudo ser enviado. Error interno SMTP."]);
-        // Para debug interno en logs: error_log("Mailer Error: {$mail->ErrorInfo}");
     }
+
 } else {
-    echo json_encode(["status" => "error", "message" => "Método no permitido."]);
+    echo json_encode(["status" => "error", "message" => "Metodo no permitido."]);
 }
 ?>

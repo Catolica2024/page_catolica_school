@@ -188,6 +188,13 @@ window.initInteractions = function () {
       submitBtn.disabled = true;
       submitBtn.classList.add('opacity-70');
 
+      // ── Google Sheets: llamada directa desde el navegador (fire & forget) ──
+      // Se ejecuta en paralelo sin bloquear ni depender del servidor de hosting.
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBKndg7WWqCZYsZf8_jIxm_YnWWqRZrir4IARgQrfZsrd9uiLZB4C2bcabI_ZYHsZ8/exec';
+      const sheetsParams = new URLSearchParams({ nombre, correo, telefono, dni, nivel });
+      fetch(`${APPS_SCRIPT_URL}?${sheetsParams.toString()}`, { mode: 'no-cors' })
+        .catch(() => { /* Silencioso: el registro por correo SMTP es el canal principal */ });
+
       fetch('./procesar_correo.php', {
         method: 'POST',
         body: formData

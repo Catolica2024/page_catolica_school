@@ -83,7 +83,7 @@ const NavbarHTML = `
     <div class="hidden lg:flex items-center gap-3">
       <a href="${BASE}index.html#admision"
          class="bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
-        Admisión 2026
+        Admisión 2027
       </a>
       <a href="https://www.peruschool.edu.pe/catolicaschool" target="_blank" rel="noopener"
          class="bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg hover:opacity-90 transition-opacity">
@@ -124,7 +124,7 @@ const NavbarHTML = `
     <a href="${BASE}pages/trabaja-con-nosotros.html" class="block font-heading text-sm font-semibold text-foreground py-3">Trabaja con nosotros</a>
     <a href="${BASE}pages/noticias.php" class="block font-heading text-sm font-semibold text-foreground py-3">Noticias</a>
 
-    <a href="${BASE}index.html#admision" class="block bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-3">Admisión 2026</a>
+    <a href="${BASE}index.html#admision" class="block bg-secondary text-secondary-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-3">Admisión 2027</a>
     <a href="https://www.peruschool.edu.pe/catolicaschool" target="_blank" rel="noopener" class="block bg-accent text-accent-foreground font-heading font-bold text-sm px-6 py-2.5 rounded-lg text-center mt-2">Intranet</a>
   </div>
 </nav>`;
