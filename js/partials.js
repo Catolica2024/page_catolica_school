@@ -29,7 +29,7 @@ const TopBannerHTML = `
 const nosotrosItems = [
   { label: '¿Quiénes somos?', href: 'quienes-somos.html' },
   { label: 'Propuesta pedagógica', href: 'propuesta-pedagogica.html' },
-  { label: 'Reglamentos', href: 'reglamentos.html' },
+  // { label: 'Reglamentos', href: 'reglamentos.html' },
   { label: 'Nuestra Infraestructura', href: 'infraestructura.html' },
 ];
 const admisionItems = [
@@ -278,7 +278,7 @@ const FAQ_DATA = [
   },
   { 
     q: "¿Cómo es el proceso de admisión?", 
-    a: "Nuestro proceso de admisión consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina de admisión para recibir orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones, propuesta pedagógica y equipo docente.\n\n3. Entrega de documentos\nPresente la documentación requerida: DNI, libreta de notas, carta de no adeudo y constancia de conducta.\n\n4. Evaluación\nEl postulante participará en una evaluación diagnóstica acorde a la vacante a la que aplica, con el acompañamiento de su familia.\n\n5. Matrícula\nUna vez aprobado el proceso, podrá formalizar la matrícula con el acompañamiento de la asesora asignada." 
+    a: "Nuestro proceso de admisión consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina de admisión para recibir orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones, propuesta pedagógica y equipo docente.\n\n3. Entrega de documentos\nPresente la documentación requerida: DNI, libreta de notas, carta de no adeudo y constancia de conducta.\n\n4. Entrevista familiar\nLa familia participará en una entrevista que nos permitirá conocer mejor al estudiante y acompañar su proceso de admisión según la vacante a la que postula.\n\n5. Matrícula\nAl completar las etapas previas, se realiza la matrícula con el acompañamiento del equipo de admisión." 
   },
   { 
     q: "¿Ofrecen servicio de transporte escolar?", 
