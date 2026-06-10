@@ -122,6 +122,15 @@ $noticias_db = $stmt->fetchAll();
       background: #94A3B8;
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9V69T8E0M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G9V69T8E0M');
+</script>
 </head>
 <body class="font-body bg-background text-foreground">
   <div id="partial-banner"></div>

@@ -29,7 +29,7 @@ const TopBannerHTML = `
 const nosotrosItems = [
   { label: '¿Quiénes somos?', href: 'quienes-somos.html' },
   { label: 'Propuesta pedagógica', href: 'propuesta-pedagogica.html' },
-  // { label: 'Reglamentos', href: 'reglamentos.html' },
+  { label: 'Documentos', href: 'reglamentos.html' },
   { label: 'Nuestra Infraestructura', href: 'infraestructura.html' },
 ];
 const admisionItems = [
