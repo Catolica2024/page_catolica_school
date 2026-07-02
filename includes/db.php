@@ -19,4 +19,3 @@ try {
      // En producción, no mostrar el error detallado
      die("Error de conexión a la base de datos: " . $e->getMessage());
 }
-?>
