@@ -1,12 +1,23 @@
 <?php
-require_once '../includes/db.php';
-
-// Obtener noticias de la DB
-$stmt = $pdo->query("SELECT * FROM noticias ORDER BY fecha DESC, created_at DESC");
-$noticias_db = $stmt->fetchAll();
-
-// Si no hay noticias en la DB, podemos mostrar unas por defecto o dejarlo vacío
+// Cargar noticias desde la base de datos
+$noticias_db = [];
+try {
+    require_once '../includes/db.php';
+    $stmt = $pdo->query("SELECT * FROM noticias ORDER BY fecha DESC, created_at DESC");
+    $noticias_db = $stmt->fetchAll();
+} catch (\Exception $e) {
+    // Si la BD no está disponible, usar noticias de muestra
+    $noticias_db = [
+        ['titulo'=>'Open Day 2026: Ven a Conocernos','subtitulo'=>'Te invitamos a recorrer nuestras instalaciones y conocer nuestra propuesta pedagógica de forma presencial.','fecha'=>'2026-11-01','categoria'=>'Evento','imagen'=>'assets/news-1.jpg','contenido'=>"Este año, Católica School abre sus puertas para que familias y estudiantes conozcan de primera mano nuestras instalaciones y propuesta educativa.\n\nFecha: 1 de noviembre de 2026 | Hora: 9:00 am – 1:00 pm\nLugar: Carabayllo, Lima."],
+        ['titulo'=>'Estudiantes Ganan Olimpiada de Matemáticas','subtitulo'=>'Nuestros alumnos de secundaria obtuvieron medallas de oro y plata en la Olimpiada Nacional.','fecha'=>'2026-10-15','categoria'=>'Logro','imagen'=>'assets/news-2.jpg','contenido'=>"Con orgullo celebramos el excelente desempeño de nuestros estudiantes en la Olimpiada Nacional de Matemáticas 2026.\n\n• Medalla de Oro: Carlos Mendoza (5.° de Secundaria)\n• Medalla de Plata: Lucía Torres (4.° de Secundaria)"],
+        ['titulo'=>'Inauguración del Nuevo Laboratorio de Robótica','subtitulo'=>'Equipado con tecnología de última generación para preparar a nuestros estudiantes para el futuro.','fecha'=>'2026-10-01','categoria'=>'Infraestructura','imagen'=>'assets/news-3.jpg','contenido'=>"Nos complace anunciar la inauguración del nuevo Laboratorio de Robótica e Innovación Tecnológica de Católica School.\n\n• 30 estaciones de trabajo con kits de robótica Arduino.\n• Software especializado de programación visual y textual.\n• Área de prototipado con impresoras 3D."],
+        ['titulo'=>'Taller de Liderazgo para Padres de Familia','subtitulo'=>'Realizamos un taller para fortalecer el vínculo entre la familia y la escuela.','fecha'=>'2026-09-20','categoria'=>'Comunidad','imagen'=>'assets/news-4.jpg','contenido'=>"El pasado 20 de septiembre celebramos con gran éxito el Taller de Liderazgo Familiar.\n\nContamos con la participación de más de 120 familias."],
+        ['titulo'=>'Campeonato Interescolar de Natación','subtitulo'=>'Nuestro equipo de natación obtuvo el primer lugar en el campeonato interescolar metropolitano.','fecha'=>'2026-09-10','categoria'=>'Deporte','imagen'=>'assets/news-5.jpg','contenido'=>"¡Católica School es campeón! Nuestro equipo se coronó primero en el Campeonato Interescolar Metropolitano 2026."],
+        ['titulo'=>'Feria de Ciencias 2026','subtitulo'=>'Los estudiantes presentaron proyectos innovadores en nuestra feria anual de ciencias y tecnología.','fecha'=>'2026-09-01','categoria'=>'Académico','imagen'=>'assets/news-6.jpg','contenido'=>"La Feria de Ciencias 2026 fue un espacio de exhibición del talento y creatividad de nuestros alumnos."],
+    ];
+}
 ?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -14,7 +25,7 @@ $noticias_db = $stmt->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noticias y Eventos | Colegio en Carabayllo - Católica School</title>
   <meta name="description" content="Mantente informado sobre los logros, eventos y novedades de Católica School en Carabayllo. ¡Conoce lo que sucede en nuestra comunidad educativa!">
-  <link rel="icon" href="../assets/icono.png">
+  <link rel="icon" type="image/png" href="../assets/icono.png?v=1">
   <link rel="stylesheet" href="../css/styles.css">
 
   <!-- Open Graph / Facebook -->
@@ -203,8 +214,8 @@ $noticias_db = $stmt->fetchAll();
                         <?= date('d M Y', strtotime($n['fecha'])) ?>
                       </span>
                     </div>
-                    <h3 class="font-heading text-lg font-bold text-[#0A2657] mb-2 group-hover:text-primary transition-colors leading-tight line-clamp-2"><?= htmlspecialchars($n['titulo']) ?></h3>
-                    <p class="text-muted-foreground text-[13px] leading-relaxed line-clamp-3 mb-4"><?= htmlspecialchars($n['subtitulo']) ?></p>
+                    <h3 class="font-heading text-lg font-bold text-[#0A2657] mb-2 group-hover:text-primary transition-colors leading-tight line-clamp-2" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word;"><?= htmlspecialchars($n['titulo']) ?></h3>
+                    <p class="text-muted-foreground text-[13px] leading-relaxed line-clamp-3 mb-4" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word;"><?= htmlspecialchars($n['subtitulo']) ?></p>
                     
                     <div class="mt-auto">
                         <span class="text-blue-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -248,9 +259,9 @@ $noticias_db = $stmt->fetchAll();
                 </div>
             </div>
 
-            <h2 id="modal-title" class="font-heading text-2xl md:text-3xl font-bold text-[#0A2657] mb-6 leading-tight"></h2>
+            <h2 id="modal-title" class="font-heading text-2xl md:text-3xl font-bold text-[#0A2657] mb-6 leading-tight" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word;"></h2>
             
-            <div id="modal-content" class="text-muted-foreground text-[14px] leading-relaxed space-y-4">
+            <div id="modal-content" class="text-muted-foreground text-[14px] leading-relaxed space-y-4" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word;">
                 <!-- Contenido de la BD -->
             </div>
         </div>

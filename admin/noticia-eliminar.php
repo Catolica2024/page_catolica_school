@@ -1,31 +1,20 @@
 <?php
-require_once 'auth.php';
-require_once '../includes/db.php';
-redirect_if_not_logged_in();
+require_once "auth.php";
+require_once "../includes/db.php";
+require_login();
 
-$id = $_GET['id'] ?? null;
-
-if ($id) {
-    try {
-        // Obtener la ruta de la imagen antes de borrar
-        $stmt = $pdo->prepare("SELECT imagen FROM noticias WHERE id = ?");
-        $stmt->execute([$id]);
-        $noticia = $stmt->fetch();
-
-        if ($noticia && $noticia['imagen']) {
-            $file_path = '../' . $noticia['imagen'];
-            if (file_exists($file_path)) {
-                unlink($file_path);
-            }
+$id = (int)($_GET["id"] ?? 0);
+if ($id > 0) {
+    $stmt = $pdo->prepare("SELECT imagen FROM noticias WHERE id = ?");
+    $stmt->execute([$id]);
+    $noticia = $stmt->fetch();
+    if ($noticia) {
+        if ($noticia["imagen"]) {
+            $ruta = dirname(__DIR__) . "/" . $noticia["imagen"];
+            if (file_exists($ruta)) @unlink($ruta);
         }
-
-        $stmt = $pdo->prepare("DELETE FROM noticias WHERE id = ?");
-        $stmt->execute([$id]);
-    } catch (Exception $e) {
-        // Manejar error
+        $pdo->prepare("DELETE FROM noticias WHERE id = ?")->execute([$id]);
     }
 }
-
-header("Location: index.php");
-exit();
-?>
+header("Location: index.php?deleted=1");
+exit;

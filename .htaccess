@@ -1,0 +1,18 @@
+# ── Sesiones (fix para cPanel con ruta de sesiones rota) ───────────────────
+php_value session.save_path "/home/lacatoli/public_html/tmp/sessions"
+
+# ── Subida de archivos ─────────────────────────────────────────────────────
+php_value upload_max_filesize 20M
+php_value post_max_size 25M
+php_value max_execution_time 60
+php_value memory_limit 128M
+
+# ── Proteger carpeta de sesiones ───────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^tmp/ - [F,L]
+</IfModule>
+
+# ── Seguridad básica ────────────────────────────────────────────────────────
+Options -Indexes
+ServerSignature Off
