@@ -410,12 +410,41 @@ $cats = ['Noticia','Evento','Logro','Infraestructura','Académico','Comunidad','
     if (!file || !file.type.startsWith('image/')) return;
     const reader = new FileReader();
     reader.onload = e => {
-      preview.src = e.target.result;
-      base64Input.value = e.target.result;
-      wrap.classList.add('show');
-      placeholder.style.display = 'none';
-      zone.style.padding = '0';
-      zone.style.border = 'none';
+      const img = new Image();
+      img.onload = () => {
+        // Redimensionar si excede límites recomendados para web (1200px máx)
+        const maxW = 1200;
+        const maxH = 1200;
+        let w = img.width;
+        let h = img.height;
+        
+        if (w > maxW || h > maxH) {
+          if (w > h) {
+            h = Math.round((h * maxW) / w);
+            w = maxW;
+          } else {
+            w = Math.round((w * maxH) / h);
+            h = maxH;
+          }
+        }
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        
+        // Exportar a JPG con calidad optimizada de 0.75 (reduce drásticamente el tamaño a ~150-250KB)
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+        
+        preview.src = compressedBase64;
+        base64Input.value = compressedBase64;
+        wrap.classList.add('show');
+        placeholder.style.display = 'none';
+        zone.style.padding = '0';
+        zone.style.border = 'none';
+      };
+      img.src = e.target.result;
     };
     reader.readAsDataURL(file);
   }
