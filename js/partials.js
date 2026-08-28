@@ -131,51 +131,125 @@ const NavbarHTML = `
 
 /* ----- Footer ----- */
 const FooterHTML = `
-<footer class="bg-primary text-white/80 py-14">
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-      <div>
-        <img src="${BASE}assets/lema_catolica.png" alt="Católica School" class="object-contain mb-4" style="width: 100px; filter:brightness(0) invert(1);">
-        <p class="text-sm leading-relaxed text-white/60">Formando líderes con valores, excelencia académica y visión global desde hace más de 20 años.</p>
+<style>
+  .footer-premium {
+    background-color: hsl(var(--primary));
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer-premium::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .footer-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .footer-title {
+    font-family: 'BreeBold', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+  .footer-link:hover {
+    color: hsl(var(--accent));
+    transform: translateX(5px);
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .footer-contact-icon {
+    color: #ffffff;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+</style>
+<footer class="footer-premium py-16">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="footer-grid">
+      <div class="space-y-4">
+        <div class="mb-2">
+          <img src="${BASE}assets/logo descubre explora y aprende.jpeg" alt="Descubre, Explora y Aprende - Católica School" class="object-contain rounded-lg" style="width: 6rem; filter: brightness(0) invert(1);">
+        </div>
+        <p class="text-sm leading-relaxed text-white/70 mt-4">
+          Formando líderes con valores, excelencia académica y visión global desde hace más de 20 años. Nuestro compromiso es la educación integral.
+        </p>
       </div>
       <div>
-        <h4 class="font-heading font-bold text-white mb-4">Enlaces</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="${BASE}index.html" class="hover:text-accent transition-colors">Inicio</a></li>
-          <li><a href="${BASE}pages/quienes-somos.html" class="hover:text-accent transition-colors">¿Quiénes somos?</a></li>
-          <li><a href="${BASE}pages/proceso-admision.html" class="hover:text-accent transition-colors">Admisión</a></li>
-          <li><a href="${BASE}pages/noticias.php" class="hover:text-accent transition-colors">Noticias</a></li>
-          <li><a href="${BASE}pages/trabaja-con-nosotros.html" class="hover:text-accent transition-colors">Trabaja con nosotros</a></li>
+        <h4 class="footer-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Información
+        </h4>
+        <ul class="space-y-3 text-sm flex flex-col">
+          <li><a href="${BASE}index.html" class="footer-link">Inicio</a></li>
+          <li><a href="${BASE}pages/quienes-somos.html" class="footer-link">¿Quiénes somos?</a></li>
+          <li><a href="${BASE}pages/proceso-admision.html" class="footer-link">Admisión</a></li>
+          <li><a href="${BASE}pages/noticias.php" class="footer-link">Noticias</a></li>
+          <li><a href="${BASE}pages/trabaja-con-nosotros.html" class="footer-link">Trabaja con nosotros</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-heading font-bold text-white mb-4">Contacto</h4>
-        <ul class="space-y-3 text-sm">
-          <li class="flex items-start gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-accent mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle W, Mz Q2 Séptima Etapa-Santo Domingo de Carabayllo, Carabayllo, Peru
+        <h4 class="footer-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Contacto
+        </h4>
+        <ul class="space-y-4">
+          <li class="footer-contact-item">
+            <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle W, Mz Q2 Séptima Etapa-Santo Domingo de Carabayllo
           </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-accent shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <li class="footer-contact-item">
+            <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             906 026 820
           </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-accent shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            mesadepartes@colegiolacatolica.edu.pe
+          <li class="footer-contact-item">
+            <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            admision@colegiolacatolica.edu.pe
           </li>
         </ul>
       </div>
       <div>
-        <h4 class="font-heading font-bold text-white mb-4">Ubicación</h4>
-        <div class="rounded-xl overflow-hidden border border-white/10">
+        <h4 class="footer-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ubicación
+        </h4>
+        <div class="rounded-xl overflow-hidden shadow-lg border border-white/10 relative group">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
           <iframe title="Ubicación Católica School"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.3896595306455!2d-77.03401242405351!3d-11.87793223878208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d0b8c515cd2f%3A0x72d08cfea0969124!2sCat%C3%B3lica%20School!5e0!3m2!1ses-419!2spe!4v1777991324244!5m2!1ses-419!2spe"
-            width="100%" height="180" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            width="100%" height="200" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
-    <div class="mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/40">
-      © 2026 Católica School. Todos los derechos reservados.
+    <div class="mt-12 pt-6 border-t border-white/10 text-center text-sm text-white/50 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>© 2026 Católica School. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-[#FFBE00] transition-colors">Términos</a>
+        <a href="#" class="hover:text-[#FFBE00] transition-colors">Privacidad</a>
+      </div>
     </div>
   </div>
 </footer>`;
@@ -208,6 +282,84 @@ const SocialSidebarHTML = `
 
 /* ----- FAQ Chat ----- */
 const FaqChatHTML = `
+<style>
+  .faq-fixed { position: fixed; z-index: 9999; }
+  .faq-bottom-24 { bottom: 6rem; }
+  .faq-right-6 { right: 1.5rem; }
+  .faq-flex { display: flex; }
+  .faq-flex-col { flex-direction: column; }
+  .faq-items-end { align-items: flex-end; }
+  .faq-items-center { align-items: center; }
+  .faq-justify-center { justify-content: center; }
+  .faq-justify-between { justify-content: space-between; }
+  .faq-hidden { display: none !important; }
+  .faq-w-14 { width: 3.5rem; }
+  .faq-h-14 { height: 3.5rem; }
+  .faq-w-10 { width: 2.5rem; }
+  .faq-h-10 { height: 2.5rem; }
+  .faq-w-6 { width: 1.5rem; }
+  .faq-h-6 { height: 1.5rem; }
+  .faq-w-1\\.5 { width: 0.375rem; }
+  .faq-h-1\\.5 { height: 0.375rem; }
+  .faq-w-\\[350px\\] { width: 350px; }
+  .faq-max-w-\\[90vw\\] { max-width: 90vw; }
+  .faq-h-\\[500px\\] { height: 500px; }
+  .faq-max-w-\\[85\\%\\] { max-width: 85%; }
+  .faq-bg-primary { background-color: #0f204b; color: white; border: none; cursor: pointer; }
+  .faq-bg-card { background-color: #ffffff; }
+  .faq-bg-white { background-color: #ffffff; }
+  .faq-bg-white-20 { background-color: rgba(255, 255, 255, 0.2); }
+  .faq-bg-white-10 { background-color: rgba(255, 255, 255, 0.1); }
+  .faq-bg-muted-30 { background-color: #f8fafc; }
+  .faq-bg-green-400 { background-color: #4ade80; }
+  .faq-text-primary-foreground { color: #ffffff; }
+  .faq-text-foreground { color: #0f172a; }
+  .faq-text-primary { color: #0f204b; text-decoration: none; }
+  .faq-rounded-full { border-radius: 9999px; }
+  .faq-rounded-2xl { border-radius: 1rem; }
+  .faq-rounded-lg { border-radius: 0.5rem; }
+  .faq-rounded-tl-none { border-top-left-radius: 0; }
+  .faq-shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+  .faq-shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+  .faq-shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+  .faq-overflow-hidden { overflow: hidden; }
+  .faq-overflow-y-auto { overflow-y: auto; }
+  .faq-border { border: 1px solid #e2e8f0; }
+  .faq-border-t { border-top: 1px solid #e2e8f0; }
+  .faq-border-border { border-color: #e2e8f0; }
+  .faq-p-4 { padding: 1rem; }
+  .faq-p-3 { padding: 0.75rem; }
+  .faq-p-1 { padding: 0.25rem; }
+  .faq-px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .faq-py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .faq-space-y-4 > * + * { margin-top: 1rem; }
+  .faq-gap-3 { gap: 0.75rem; }
+  .faq-gap-2 { gap: 0.5rem; }
+  .faq-gap-1 { gap: 0.25rem; }
+  .faq-mb-2 { margin-bottom: 0.5rem; }
+  .faq-font-heading { font-family: 'Outfit', sans-serif; }
+  .faq-font-bold { font-weight: 700; }
+  .faq-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .faq-text-xs { font-size: 0.75rem; line-height: 1rem; }
+  .faq-text-\\[10px\\] { font-size: 10px; }
+  .faq-opacity-80 { opacity: 0.8; }
+  .faq-flex-1 { flex: 1 1 0%; }
+  .faq-text-center { text-align: center; }
+  .faq-text-left { text-align: left; border: none; cursor: pointer; }
+  .faq-w-full { width: 100%; }
+  .faq-hover-scale-110:hover { transform: scale(1.1); }
+  .faq-transition-transform { transition-property: transform; transition-duration: 300ms; }
+  .faq-transition-colors { transition-property: background-color, border-color, color, fill, stroke; transition-duration: 300ms; }
+  .faq-animate-float { animation: faq-float 3s ease-in-out infinite; }
+  @keyframes faq-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .faq-hover-underline:hover { text-decoration: underline; }
+  .faq-hover-bg-white-10:hover { background-color: rgba(255, 255, 255, 0.1); cursor: pointer; border: none; }
+  .faq-hover-bg-primary { transition: all 0.2s; }
+  .faq-hover-bg-primary:hover { background-color: #0f204b; color: #fff; }
+</style>
 <div id="faq-chat-container" class="faq-fixed faq-bottom-24 faq-right-6 faq-flex faq-flex-col faq-items-end" style="z-index: 9999;">
   <!-- Botón Flotante FAQ -->
   <button id="faq-chat-trigger" aria-label="Preguntas frecuentes"
@@ -260,37 +412,37 @@ const FaqChatHTML = `
 </div>`;
 
 const FAQ_DATA = [
-  { 
-    q: "¿Cuáles son los niveles educativos que ofrece el Colegio?", 
-    a: "En Católica School contamos con tres niveles educativos:\n\n• Early Years: Inicial y 1.er grado\n• Elementary: de 2.º a 5.º grado de primaria\n• Middle & High School: de 6.º grado de primaria a 5.º de secundaria" 
+  {
+    q: "¿Cuáles son los niveles educativos que ofrece el Colegio?",
+    a: "En Católica School contamos con tres niveles educativos:\n\n• Early Years: Inicial y 1.er grado\n• Elementary: de 2.º a 5.º grado de primaria\n• Middle & High School: de 6.º grado de primaria a 5.º de secundaria"
   },
-  { 
-    q: "¿Cuál es el horario de clases?", 
-    a: "Los horarios de clase se organizan por nivel educativo:\n\nInicial\n• 3, 4 y 5 años: de 7:45 a.m. a 1:15 p.m.\n\nPrimaria\n• 1er grado: de 7:30 a.m. a 2:20 p.m.\n• De 2do a 6to grado: de 7:30 a.m. a 2:20 p.m.\n\nSecundaria\n• De 1er a 5to año: de 7:30 a.m. a 3:00 p.m." 
+  {
+    q: "¿Cuál es el horario de clases?",
+    a: "Los horarios de clase se organizan por nivel educativo:\n\nInicial\n• 3, 4 y 5 años: de 7:45 a.m. a 1:15 p.m.\n\nPrimaria\n• 1er grado: de 7:30 a.m. a 2:20 p.m.\n• De 2do a 6to grado: de 7:30 a.m. a 2:20 p.m.\n\nSecundaria\n• De 1er a 5to año: de 7:30 a.m. a 3:00 p.m."
   },
-  { 
-    q: "¿El Colegio cuenta con programa Bilingüe?", 
-    a: "Contamos con un programa bilingüe en desarrollo. Actualmente, los estudiantes reciben 7 horas de inglés a la semana.\n\nEn el nivel de primaria (de 1.er a 6.º grado), dentro de esta carga horaria se incluyen 2 horas del curso de Science, el cual se desarrolla íntegramente en inglés. Estas sesiones están diseñadas como experiencias de aprendizaje 100% en este segundo idioma, promoviendo la comprensión, exploración y aplicación de contenidos de manera natural y contextualizada." 
+  {
+    q: "¿El Colegio cuenta con programa Bilingüe?",
+    a: "Contamos con un programa bilingüe en desarrollo. Actualmente, los estudiantes reciben 7 horas de inglés a la semana.\n\nEn el nivel de primaria (de 1.er a 6.º grado), dentro de esta carga horaria se incluyen 2 horas del curso de Science, el cual se desarrolla íntegramente en inglés. Estas sesiones están diseñadas como experiencias de aprendizaje 100% en este segundo idioma, promoviendo la comprensión, exploración y aplicación de contenidos de manera natural y contextualizada."
   },
-  { 
-    q: "¿Cuáles son las actividades extracurriculares disponibles?", 
-    a: "Nuestros estudiantes pueden acceder a los talleres extracurriculares a través de Católica Kids Club, donde ofrecen diversas opciones para complementar su desarrollo integral:\n\n• Gimnasia\n• Vóley\n• Ballet\n• Estimulación temprana y adaptación\n• Teatro\n• Natación" 
+  {
+    q: "¿Cuáles son las actividades extracurriculares disponibles?",
+    a: "Nuestros estudiantes pueden acceder a los talleres extracurriculares a través de Católica Kids Club, donde ofrecen diversas opciones para complementar su desarrollo integral:\n\n• Gimnasia\n• Vóley\n• Ballet\n• Estimulación temprana y adaptación\n• Teatro\n• Natación"
   },
-  { 
-    q: "¿Cómo es el proceso de admisión?", 
-    a: "Nuestro proceso de admisión consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina de admisión para recibir orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones, propuesta pedagógica y equipo docente.\n\n3. Entrega de documentos\nPresente la documentación requerida: DNI, libreta de notas, carta de no adeudo y constancia de conducta.\n\n4. Entrevista familiar\nLa familia participará en una entrevista que nos permitirá conocer mejor al estudiante y acompañar su proceso de admisión según la vacante a la que postula.\n\n5. Matrícula\nAl completar las etapas previas, se realiza la matrícula con el acompañamiento del equipo de admisión." 
+  {
+    q: "¿Cómo es el proceso de admisión?",
+    a: "Nuestro proceso de admisión consta de 5 pasos:\n\n1. Solicitud de información\nComplete el formulario de interés o comuníquese con nuestra oficina de admisión para recibir orientación inicial.\n\n2. Visita guiada\nAgende una visita para conocer nuestras instalaciones, propuesta pedagógica y equipo docente.\n\n3. Entrega de documentos\nPresente la documentación requerida: DNI, libreta de notas, carta de no adeudo y constancia de conducta.\n\n4. Entrevista familiar\nLa familia participará en una entrevista que nos permitirá conocer mejor al estudiante y acompañar su proceso de admisión según la vacante a la que postula.\n\n5. Matrícula\nAl completar las etapas previas, se realiza la matrícula con el acompañamiento del equipo de admisión."
   },
-  { 
-    q: "¿Ofrecen servicio de transporte escolar?", 
-    a: "Actualmente, el colegio no brinda servicio de transporte escolar. Sin embargo, existen movilidades externas que ofrecen este servicio. Podemos compartir algunas referencias, previa solicitud." 
+  {
+    q: "¿Ofrecen servicio de transporte escolar?",
+    a: "Actualmente, el colegio no brinda servicio de transporte escolar. Sin embargo, existen movilidades externas que ofrecen este servicio. Podemos compartir algunas referencias, previa solicitud."
   },
-  { 
-    q: "¿Cuáles son las formas de pago?", 
-    a: "Aceptamos pagos a través de tarjetas de débito y crédito, así como mediante Yape, Plin y pago en efectivo." 
+  {
+    q: "¿Cuáles son las formas de pago?",
+    a: "Aceptamos pagos a través de tarjetas de débito y crédito, así como mediante Yape, Plin y pago en efectivo."
   },
-  { 
-    q: "¿El colegio cuenta con servicio de alimentación?", 
-    a: "Contamos con un concesionario dentro de la escuela, que brinda servicio de alimentación para nuestros estudiantes." 
+  {
+    q: "¿El colegio cuenta con servicio de alimentación?",
+    a: "Contamos con un concesionario dentro de la escuela, que brinda servicio de alimentación para nuestros estudiantes."
   }
 ];
 
@@ -347,12 +499,12 @@ function initFaqChat() {
         const qa = FAQ_DATA[index];
         addMessage(qa.q, 'user');
         optionsEl.innerHTML = ''; // Limpiar opciones mientras responde
-        
+
         setTimeout(() => {
           addMessage(qa.a, 'system');
           setTimeout(() => {
             renderOptions(); // Las opciones se cargan abajo
-            
+
             // Agregar aviso discreto de que hay más preguntas abajo
             const hint = document.createElement('button');
             hint.className = "faq-text-primary faq-font-bold faq-flex faq-items-center faq-gap-1 faq-mx-auto faq-mt-2 faq-hover-underline faq-transition-colors faq-animate-fade-in";
@@ -382,10 +534,10 @@ function initFaqChat() {
       msg.style.alignSelf = 'flex-start';
     }
     msg.textContent = text;
-    
+
     // Insertar ANTES de las opciones
     bodyEl.insertBefore(msg, optionsEl);
-    
+
     setTimeout(() => {
       // Si es sistema, enfocamos el inicio del mensaje. Si es usuario, vamos al final.
       const targetScroll = type === 'system' ? msg.offsetTop - 10 : bodyEl.scrollHeight;
